@@ -1,0 +1,6 @@
+# 1.0.0 (2020-12-25)
+
+
+### Features
+
+* a base docker image with lots of useful python packages installed for astronomy ([efe46b9](https://github.com/rickbassham/python-astro/commit/efe46b9f76586c3e7e8025f2b6f9a5a6800dec43))
