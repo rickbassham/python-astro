@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          key: ${{ runner.os }}-buildx-${{ hashFiles('Pipfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-buildx-
       - name: Login to DockerHub
@@ -43,7 +43,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64 #,linux/arm/v6,linux/arm/v7,linux/arm64
+          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           cache-from: type=local,src=/tmp/.buildx-cache
